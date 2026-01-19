@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            border: 1px solid black;
+        }
+        table{
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table></table>
+    <button onclick="foo()">Добавить число</button>
+    <script>
+        let numbers = [];
+            for(let i = 0; i < 30; i++) {
+                numbers.push(Math.floor(Math.random() * 100));
+            }
+
+        for(let row = 0; row < 5; row++) {
+                let tr = document.createElement('tr');
+                for(let col = 0; col < 6; col++) {
+                    let td = document.createElement('td');
+                    td.textContent = numbers[row * 6 + col];
+                    tr.appendChild(td);
+                }
+            document.querySelector('table').appendChild(tr);
+            }
+
+            let table = document.body.firstElementChild
+
+            for(let row of table.rows) {
+        for (let td of row.cells) {
+            if(Number(td.textContent) > 49){
+                td.style.backgroundColor = "orange"
+            }
+        }
+    }
+    </script>
+</body>
+</html>
