@@ -15,57 +15,43 @@
 </head>
 <body>
     <table></table>
-    <button onclick="foo()">Добавить число</button>
+    <button onclick="addNumber()">Добавить число</button>
     <script>
-        let numbers = [];
-            for(let i = 0; i < 30; i++) {
-                numbers.push(Math.floor(Math.random() * 100));
-            }
-
-        for(let row = 0; row < 5; row++) {
-                let tr = document.createElement('tr');
-                for(let col = 0; col < 6; col++) {
-                    let td = document.createElement('td');
-                    td.textContent = numbers[row * 6 + col];
-                    tr.appendChild(td);
-                }
-            document.querySelector('table').appendChild(tr);
-            }
-
-            let table = document.body.firstElementChild
-
-            for(let row of table.rows) {
-        for (let td of row.cells) {
-            if(Number(td.textContent) > 49){
-                td.style.backgroundColor = "orange"
-            }
+        let allNumbers = [];
+        for(let i = 0; i < 30; i++) {
+            allNumbers.push(Math.floor(Math.random() * 100));
         }
-    }
-    let i = 5;
-let currentRow = null;
 
-function foo() {
-    if(i > 5) {
-        currentRow = document.createElement('tr');
-        i = 0;
-    }
-    
-    const newCell = document.createElement('td');
-    
-    const randomNumber = Math.floor(Math.random() * 100);
-    newCell.textContent = randomNumber;
-    
-    if(randomNumber > 49) {
-        newCell.style.backgroundColor = "orange";
-    } else {
-        newCell.style.backgroundColor = "white";
-    }
-    
-    i++;
-    
-    currentRow.appendChild(newCell);
-    table.appendChild(currentRow);
-}
+        function Table() {
+            let tableHTML = '';
+            
+            for(let i = 0; i < allNumbers.length; i++) {
+
+                if(i % 6 === 0) {
+                    if(i > 0) tableHTML += '</tr>';
+                    tableHTML += '<tr>';
+                }
+                
+                const num = allNumbers[i];
+                tableHTML += `<td style="background-color: ${num > 49 ? 'orange' : 'white'}">${num}</td>`;
+            }
+            
+            if(allNumbers.length > 0) {
+                tableHTML += '</tr>';
+            }
+            
+            document.querySelector('table').innerHTML = tableHTML;
+        }
+
+        Table();
+
+        function addNumber() {
+
+            const randomNumber = Math.floor(Math.random() * 100);
+            allNumbers.push(randomNumber);
+            
+            Table();
+        }
     </script>
 </body>
 </html>
