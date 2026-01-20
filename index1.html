@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>пп</title>
+    <title>0o0</title>
     <style>
         td{
             border: 1px solid black;
@@ -21,6 +21,8 @@
         for(let i = 0; i < 30; i++) {
             Numbers.push(Math.floor(Math.random() * 100));
         }
+
+        const table = document.body.firstElementChild;
 
         function Table() {
             let tableHTML = '';
@@ -43,7 +45,7 @@
                 tableHTML += '</tr>';
             }
             
-            document.getElementsByTagName('table')[0].innerHTML = tableHTML;
+            table.innerHTML = tableHTML;
         }
 
         Table();
@@ -51,7 +53,6 @@
         function foo() {
             const random = Math.floor(Math.random() * 100);
             Numbers.push(random);
-            
             Table();
         }
     </script>
