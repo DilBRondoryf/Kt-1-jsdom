@@ -1,10 +1,9 @@
-<html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>пп</title>
     <style>
         td{
             border: 1px solid black;
@@ -18,42 +17,40 @@
     <table></table>
     <button onclick="foo()">добавить</button>
     <script>
-        let allNumbers = [];
+        let Numbers = [];
         for(let i = 0; i < 30; i++) {
-            allNumbers.push(Math.floor(Math.random() * 100));
+            Numbers.push(Math.floor(Math.random() * 100));
         }
 
         function Table() {
             let tableHTML = '';
             
-            for(let i = 0; i < allNumbers.length; i++) {
-
+            for(let i = 0; i < Numbers.length; i++) {
                 if(i % 6 === 0) {
                     if(i > 0) tableHTML += '</tr>';
                     tableHTML += '<tr>';
                 }
                 
-                const num = allNumbers[i];
+                const num = Numbers[i];
                 let color = 'white';
                 if (num > 49) {
                     color = 'orange';
                 }
                 tableHTML += `<td style="background-color: ${color}">${num}</td>`;
-                            }
+            }
             
-            if(allNumbers.length > 0) {
+            if(Numbers.length > 0) {
                 tableHTML += '</tr>';
             }
             
-            document.querySelector('table').innerHTML = tableHTML;
+            document.getElementsByTagName('table')[0].innerHTML = tableHTML;
         }
 
         Table();
 
         function foo() {
-
-            const randomNumber = Math.floor(Math.random() * 100);
-            allNumbers.push(randomNumber);
+            const random = Math.floor(Math.random() * 100);
+            Numbers.push(random);
             
             Table();
         }
